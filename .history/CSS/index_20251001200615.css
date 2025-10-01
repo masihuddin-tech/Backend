@@ -1,0 +1,7 @@
+#para {
+  color: blue;        
+  font-size: 20px;    
+  font-weight: bold;  /* Make it bold */
+  text-align: center; /* Center the text */
+  margin-top: 20px;   /* Space from top */
+}
