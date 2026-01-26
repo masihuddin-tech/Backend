@@ -46,7 +46,7 @@
 
 
 /* *****Event listener*****
-For running this 'Event listener' part, comment all the above code.
+For running the 'Event listener' part, comment all the above code.
 */
 
 // //One way (Not preferrable)
@@ -56,11 +56,61 @@ function afterClick(){
 }
 
 // //Modern way (Preferrable)
+// //1]
 const el2 = document.getElementById("second");
-
 el2.addEventListener('click',()=>{
     el2.textContent = "This is the another modern way of onclick event listener";
 });
 el2.addEventListener('dblclick',()=>{
     el2.style.backgroundColor = "Brown";
 });
+
+// //2]
+const el3 = document.getElementById("third");
+const og_txt = el3.textContent;
+const og_bg = el3.style.background;
+
+el3.addEventListener('mouseenter',()=>{
+    el3.textContent = "Keep Going, Keep Grinding!!";
+    el3.style.background = "Green"
+});
+el3.addEventListener('mouseleave',()=>{
+    el3.textContent = og_txt;
+    el3.style.background = og_bg;
+});
+
+// //3]
+// //3.1]Creating multiple 'Event Listener' (using for loop) 
+// const parent = document.getElementById("parent");
+// for(let child of parent.children){
+//     child.addEventListener('click',()=>{
+//         child.textContent = "I am Clicked";
+//     });
+// }
+// //(Creating multiple 'Event listener' using 'for loop' is not much optimized, there is an another optimized method for creating multiple event listener known as 'e.target')
+
+// //(Comment the above part code [3.1] for running this code)
+// //3.2]Creating multiple 'Event Listener' (using 'e.target')(Most optimized method)
+// const parent = document.getElementById("parent");
+// parent.addEventListener('click',(e)=>{
+//     e.target.textContent = "Remove Event Listener";
+// })
+
+// //4]Removing event listener (When we create 'Event Listener', we have to remove it too using '.removeEventListener')
+// //4.1]Using separate '.addEventListener' and '.removeEventListener' (Not much optimized)
+// parent.removeEventListener('click',(e)=>{
+//     e.target.textContent = "Event Listener Removed";
+// })
+
+// //4.2]Using function (Most Optimized for adding + removing)
+// //(Comment the above [3-4.1] part)
+const parent = document.getElementById("parent");
+function handleClick(e){
+    e.target.textContent = "I am clicked";
+}
+
+// //Comment '.removeEventListener' then run '.addEventListener' below. 
+parent.addEventListener('click',handleClick);
+// parent.removeEventListener('click',handleClick);
+
+// //************** FINISHED **************

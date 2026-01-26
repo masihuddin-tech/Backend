@@ -16,17 +16,29 @@
 
     </ul>
 
-    <!-- Events Listtener-->
 
-     <!-- One way (Not preferrable) -->
-    <h2 id="first" onclick="afterClick()">Click Me</h2>    
+    <!-- Events Listener-->
+
+     <!-- One way (Not preferrable) (Bcoz isme function yahi p call kr rhe h)-->
+     <h2 id="first" onclick="afterClick()">Click Me</h2>    
     
-    <!-- Modern way (Preferrable) -->
+     <!-- Modern way (Preferrable) -->
      <h2 id="second">Click Me!</h2>
 
+     <h2 id="third">Bring your cursor here</h2>
 
+     <!-- Add Multiple Event Listener -->
+     <div id="parent">
+        <div id="child1" class="child" style="height: 150px; width: 150px; background-color: orange;">First</div>
+        <div id="child2" class="child" style="height: 150px; width: 150px; background-color: hotpink;">Second</div>
+        <div id="child3" class="child" style="height: 150px; width: 150px; background-color: green;">Third</div>
+        <div id="child4" class="child" style="height: 150px; width: 150px; background-color: grey;">Fourth</div>
+        <div id="child5" class="child" style="height: 150px; width: 150px; background-color: blueviolet;">Fifth</div>
+     </div>
 
     <script src="../JS/dom.js"></script>
-    <script src="../JS/event.js"></script>
+    
 </body>
 </html>
+
+<!-- FINISHED -->

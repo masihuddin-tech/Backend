@@ -1,0 +1,101 @@
+//Projects-
+
+//1]Random Quote Generator
+const quotes = [
+  "Believe in yourself and all that you are.",
+  "Success comes from hard work and patience.",
+  "Every day is a new opportunity to grow.",
+  "Do not stop when you are tired, stop when you are done.",
+  "Dream big and dare to fail.",
+  "Consistency is more important than motivation.",
+  "Small steps every day lead to big results.",
+  "Learning never exhausts the mind.",
+  "Discipline is the bridge between goals and success.",
+  "Your future depends on what you do today.",
+  "Mistakes are proof that you are trying.",
+  "Focus on progress, not perfection.",
+  "Hard times create strong people.",
+  "Believe you can, and you are halfway there.",
+  "Push yourself, because no one else will.",
+  "Success is not for the lazy.",
+  "Growth begins at the end of your comfort zone.",
+  "Patience and persistence conquer all things.",
+  "Work in silence, let success make the noise.",
+  "Never give up on something you truly want."
+];
+const quote = document.getElementById("quote");
+const btn = document.getElementById("btn");
+
+btn.addEventListener('click',()=>{
+    const index = Math.floor(Math.random()*quotes.length);
+    quote.textContent = `"${quotes[index].toUpperCase()}"`;   //Prints the quotees in inverted commas("").
+})
+
+/*Explanation:
+1]Math.random() - generates a random decimal number between 0 and 1.
+2]quotes.length - gives the total number of quotes in the array.
+3]Math.random() * quotes.length - gives a random decimal number between 0 and (length − 1).
+4]Math.floor(...) - removes the decimal part, giving a valid array index.
+5]quotes[randomIndex] - prints the randomly selected quote from the array.
+*/
+
+
+// //2]Background Changer
+const parent = document.getElementById("parent");
+
+// //2.1)Using 'e.targert'
+parent.addEventListener('click',(e)=>{
+  const child = e.target;
+  document.body.style.backgroundColor = child.id;   //Colors and ids are same.
+})
+
+// //2.2)Using 'for loop'
+// for(let child of parent.children){
+//   child.addEventListener('click',()=>{
+//     document.body.style.backgroundColor = child.id;
+//   })
+// }
+
+
+// //3]Rich Calculator
+const form = document.getElementById("form");
+form.addEventListener('submit',(e)=>{   
+  e.preventDefault();//Here, instead of 'click' we have to write 'submit', bcoz we initialized the button type = submit. 
+  const surname = document.getElementById("Surname");
+  
+  const sur_name = surname.value.length;
+  const res = sur_name*10;
+  
+  const result = document.getElementById('Result');
+  result.textContent = res;
+  result.textContent = `Result: ${res}%`;
+})
+
+
+// //4]Digital Clock
+setInterval(() => {   //Its is a type of function which act as a callback function. Means, the code which is written inside it will be executed after each interval of time, and interval time is passed at the end of the function in miliseconds.
+  const time = document.getElementById("time");
+  let set_time = new Date(); 
+  time.textContent = set_time.toLocaleTimeString();
+}, 1000);   //Here, the time interval is passed in milisecods (1000 m/s = 1sec)
+
+
+// //5]Countdown Timer
+const timer = document.getElementById("timer");
+
+setInterval(()=>{
+  const current_time = new Date().getTime();  //Current date in miliseconds, .'getTime()' is used to convert the time in miliseconds
+  const olympic_time = new Date(2028,6,14).getTime();  //Olympic Date, new Date(2028,6) 2028=Olympic year and 6=Month(July), Month starts with 0 based index (Ex: 0-Jan, 1-Feb ,2-Mar, 3-April...)
+  let new_time = olympic_time-current_time;
+
+  const days = Math.floor((new_time)/(1000*60*60*24));
+  new_time %= 1000*60*60*24;
+  const hours = Math.floor((new_time)/(1000*60*60));
+  new_time %= 1000*60*60;
+  const minutes = Math.floor((new_time)/(1000*60));
+  new_time %= 1000*60;
+  const seconds = Math.floor((new_time)/(1000));
+  new_time %= 1000;
+
+  timer.textContent = ` ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
+},1000);

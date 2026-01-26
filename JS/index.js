@@ -889,3 +889,8 @@ Is poore process ko DOM bolte h*/
 */
 
 /* ********** Refer (dom.html) and (dom.js) for more ********** */
+
+
+
+
+//// ***********DOM(DOCUMENT OBJECT MODEL)***********
