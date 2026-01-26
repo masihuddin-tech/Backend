@@ -58,8 +58,8 @@ parent.addEventListener('click',(e)=>{
 
 
 // //3]Rich Calculator
-const form = document.getElementById("form");
-form.addEventListener('submit',(e)=>{   
+const form_1 = document.getElementById("form");
+form_1.addEventListener('submit',(e)=>{   
   e.preventDefault();//Here, instead of 'click' we have to write 'submit', bcoz we initialized the button type = submit. 
   const surname = document.getElementById("Surname");
   
@@ -99,3 +99,44 @@ setInterval(()=>{
 
   timer.textContent = ` ${days} Days, ${hours} Hours, ${minutes} Minutes, ${seconds} Seconds`;
 },1000);
+
+
+// //6]Clicker --(Refer JSproject_6.js)
+
+
+// //7]To Do List
+const form2 = document.getElementById("form2");
+const task = document.getElementById("task");
+
+const taskList = document.getElementById("taskList");
+
+form2.addEventListener('submit',(e)=>{
+  e.preventDefault();
+  const text = task.value.trim();
+
+  const parent = document.createElement("div");
+  parent.style.marginTop = "20px";
+
+  const span = document.createElement("span");
+  span.textContent = text;
+  span.style.marginRight = "20px";
+
+  const done_btn = document.createElement("button");
+  done_btn.textContent = "Done";
+  done_btn.style.marginRight = "20px";
+  done_btn.addEventListener('click',(e)=>{
+    span.style.textDecoration = "line-through";
+    span.style.color = "grey";
+  })
+
+  const dlt_btn = document.createElement("button"); 
+  dlt_btn.textContent = "Delete"; 
+  dlt_btn.addEventListener('click',(e)=>{
+    parent.remove();
+  })
+
+  parent.append(span,done_btn,dlt_btn);
+  taskList.append(parent);
+
+  form2.reset();
+})
