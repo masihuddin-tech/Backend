@@ -140,3 +140,6 @@ form2.addEventListener('submit',(e)=>{
 
   form2.reset();
 })
+
+
+// //8]Quiz Form
