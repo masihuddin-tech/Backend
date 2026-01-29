@@ -143,3 +143,24 @@ form2.addEventListener('submit',(e)=>{
 
 
 // //8]Quiz Form
+const quiz_form = document.getElementById("quiz_form");
+quiz_form.addEventListener(('submit'),(e)=>{
+  e.preventDefault();
+  let score = 0;  
+  const ans = {
+    q1 : "Sachin Tendulkar",
+    q2 : "West Indies",
+    q3 : "Virat Kohli",
+    q4 : "264",
+    q5 : "Muttiah Muralitharan",
+  }
+
+  const form_data = new FormData(quiz_form);  //FormData() -It is used to collect all the values of a form’s input fields and store them as key–value pairs.
+  for(let [name,value] of form_data.entries()){   //.entries() - It returns key–value pairs so data can be easily looped over.
+    if(value == ans[name]){   //Users selected value will be compared to ans[name]. Means in ans[name]; name stores the values of the corresponding keys. Means ans[name] --> ans [name=q1=Sachin Tendulkar] -->{q1 : Sachin Tendulkar} = ans[Sachin Tendulkar]
+      score+=1;
+    }
+  }
+  document.getElementById("disp_score").textContent = `Your score is ${score} out of 5`;
+  quiz_form.reset();
+})
