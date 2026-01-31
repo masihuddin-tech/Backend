@@ -105,41 +105,41 @@ setInterval(()=>{
 
 
 // //7]To Do List
-const form2 = document.getElementById("form2");
-const task = document.getElementById("task");
+// const form2 = document.getElementById("form2");
+// const task = document.getElementById("task");  //It is inside a form but then too it has to be called inside DOM explicitly, bcoz its an input field and we have to access the value of that. [NOTE: Fields like 'Input', 'Textarea', 'Selects' contains value; and we have to access it using '.value()'] 
 
-const taskList = document.getElementById("taskList");
+// const taskList = document.getElementById("taskList");
 
-form2.addEventListener('submit',(e)=>{
-  e.preventDefault();
-  const text = task.value.trim();
+// form2.addEventListener('submit',(e)=>{
+//   e.preventDefault();
+//   const text = task.value.trim();
 
-  const parent = document.createElement("div");
-  parent.style.marginTop = "20px";
+//   const parent = document.createElement("div");
+//   parent.style.marginTop = "20px";
 
-  const span = document.createElement("span");
-  span.textContent = text;
-  span.style.marginRight = "20px";
+//   const span = document.createElement("span");
+//   span.textContent = text;
+//   span.style.marginRight = "20px";
 
-  const done_btn = document.createElement("button");
-  done_btn.textContent = "Done";
-  done_btn.style.marginRight = "20px";
-  done_btn.addEventListener('click',(e)=>{
-    span.style.textDecoration = "line-through";
-    span.style.color = "grey";
-  })
+//   const done_btn = document.createElement("button");
+//   done_btn.textContent = "Done";
+//   done_btn.style.marginRight = "20px";
+//   done_btn.addEventListener('click',(e)=>{   //Yaha 'submit' nhi 'click' use krenge q k, 'submit' forms k btn me use hota h or ye btn form k bhr create kiya hua h.
+//     span.style.textDecoration = "line-through";
+//     span.style.color = "grey";
+//   })
 
-  const dlt_btn = document.createElement("button"); 
-  dlt_btn.textContent = "Delete"; 
-  dlt_btn.addEventListener('click',(e)=>{
-    parent.remove();
-  })
+//   const dlt_btn = document.createElement("button"); 
+//   dlt_btn.textContent = "Delete"; 
+//   dlt_btn.addEventListener('click',(e)=>{
+//     parent.remove();
+//   })
 
-  parent.append(span,done_btn,dlt_btn);
-  taskList.append(parent);
+//   parent.append(span,done_btn,dlt_btn);
+//   taskList.append(parent);   //If we create any element, then it must be append in any element. Bcoz, when we create any element it just stores in a memory, but for diplaying it, we have to append to any UI element.
 
-  form2.reset();
-})
+//   form2.reset();
+// })
 
 
 // //8]Quiz Form
@@ -154,7 +154,6 @@ quiz_form.addEventListener(('submit'),(e)=>{
     q4 : "264",
     q5 : "Muttiah Muralitharan",
   }
-
   const form_data = new FormData(quiz_form);  //FormData() -It is used to collect all the values of a form’s input fields and store them as key–value pairs.
   for(let [name,value] of form_data.entries()){   //.entries() - It returns key–value pairs so data can be easily looped over.
     if(value == ans[name]){   //Users selected value will be compared to ans[name]. Means in ans[name]; name stores the values of the corresponding keys. Means ans[name] --> ans [name=q1=Sachin Tendulkar] -->{q1 : Sachin Tendulkar} = ans[Sachin Tendulkar]
@@ -163,4 +162,42 @@ quiz_form.addEventListener(('submit'),(e)=>{
   }
   document.getElementById("disp_score").textContent = `Your score is ${score} out of 5`;
   quiz_form.reset();
+})
+
+
+
+// //Practice
+// //To do list
+const to_do_form = document.getElementById("to_do_form");
+const task = document.getElementById("task");
+
+to_do_form.addEventListener(('submit'),(e)=>{
+  e.preventDefault();
+
+  const text = task.value;
+
+  const new_div = document.createElement("div");
+  new_div.style.marginTop = "35px";
+
+  const span = document.createElement("span");
+  span.textContent = text;
+
+  const done_btn = document.createElement("button");
+  done_btn.textContent = "Done";
+  done_btn.style.marginLeft = "120px";
+  done_btn.addEventListener(('click'),(e)=>{
+    span.style.textDecoration = "line-through"
+    span.style.color = "Grey"
+  })
+  
+  const dlt_btn = document.createElement("button");
+  dlt_btn.textContent = "Delete";
+  dlt_btn.style.marginLeft = "20px";
+  dlt_btn.addEventListener(('click'),(e)=>{
+    new_div.remove();
+  })
+
+  new_div.append(span,done_btn,dlt_btn);
+  to_do_form.after(new_div);
+  to_do_form.reset();
 })
