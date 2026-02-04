@@ -20,3 +20,5 @@ body.addEventListener(('click'),(e)=>{
   },4000)   //5 sec k baad remove hojayega
 
 })
+
+// //Return to (JSproject_1-5.js) for further path

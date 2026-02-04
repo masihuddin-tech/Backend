@@ -876,9 +876,8 @@ console.log(s1);  //Deletes all the elements
 
 
 
-
 // //====================================================DAY-6====================================================
-//// ***********DOM(DOCUMENT OBJECT MODEL)***********
+// // ***********DOM(DOCUMENT OBJECT MODEL)***********
 
 // //Love Babbar defination
 /*HTML code ko JS k object me convert krte h (us JS object ko Document bolte h).
@@ -892,5 +891,11 @@ Is poore process ko DOM bolte h*/
 
 
 
+// //=======================Day-404(Error)(A long break/day waste)=============================
+// //***********JSPojects***********
+/*Refer (JSproject_1-5.html ,JSproject_6.html) and (JSproject_1-5.js ,JSproject_6.html) for more*/
 
-//// ***********DOM(DOCUMENT OBJECT MODEL)***********
+
+
+// //=======================No Days Numbering=======================
+// //***********Promise (JSON and JS Object)***********
