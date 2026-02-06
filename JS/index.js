@@ -898,4 +898,26 @@ Is poore process ko DOM bolte h*/
 
 
 // //=======================No Days Numbering=======================
-// //***********Promise (JSON and JS Object)***********
+// //***********Promise (JSON (JavaScript Object Notation) and JS Object)***********
+/*
+1]JSON(JavaScript Object Notation) - It is an universal format which is understandable by every languages(C,C++,Java,Pyhton,etc). Its a key value pairs of data.
+2]JS Object - In JS, an object is a non-primitive, dynamic data type used to store a collection of related data and functionality as key-value pairs.
+
+3]Promise - Its an object, it has 2 states namely Fulfilled/Accept, Reject.
+Explanation:- When we request any website like 'https://api.github.com/users' then that request is in 'promise' state means we will get the response but it will take some time bcoz it is an asynchronous task(which takes some time to execute).
+When we get the expected response then promise is fulfilled, and when we dont get the expected response then promise is rejected
+
+Promise Fulfilled States - When the communication between the client and server is successful. In short, even if we dont get the expected result but server had responded, then too its a fulfill state. Ex, In the above github link, I typed 'usrs' instead of 'users',  and if the server responses like "Cannot fetched data"/"Incorrect link", then too its an Promise Fulfilled State. 
+Promise Failed States - When users network is down, when server is down, when dns server(Converts web name to IP addresses) is down, when users api limit is hit/over. In short, when the client cannot communicate with the server completely.
+*/
+
+
+
+// //Promise Chaining
+fetch("https://api.github.com/users")   //We fetched this link. 
+.then((response)=>{   //'.then()' - It is an asynchronous task(which takes some time to execute), once the link is fetched the '.then()' block executes.
+  return response.json();   //Once the link is fetched successfully, we convert it into '.json()' format.
+})
+.then((data)=>{  
+  console.log(data);    //After converting to '.json()', we print the data (In '.json()' format)
+})
