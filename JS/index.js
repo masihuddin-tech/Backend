@@ -852,26 +852,26 @@ result = 30
 // //Set is a type of array which only contains the unique value elements. If duplicate value element is detected, then too it gets count as a single element.
 
 // //Array - (Creation of array)
-const arr = [10,20,30,30,40,50,60,60];  
-// console.log(arr); 
+// const arr = [10,20,30,30,40,50,60,60];  
+// // console.log(arr); 
 
-// // //Set - (Creation of set)
-const s1 = new Set(arr);  //The 'arr' contains duplicate value, but set will count it once only. As it contains only unique value.
-console.log(s1);
+// // // //Set - (Creation of set)
+// const s1 = new Set(arr);  //The 'arr' contains duplicate value, but set will count it once only. As it contains only unique value.
+// console.log(s1);
 
-s1.add(100);  //Inserts an element
-console.log(s1);
+// s1.add(100);  //Inserts an element
+// console.log(s1);
 
-console.log(s1.has(100));   //Checks for the given element
-console.log(s1.has(80));    //Checks for the given element
+// console.log(s1.has(100));   //Checks for the given element
+// console.log(s1.has(80));    //Checks for the given element
 
-s1.delete(60);  //Deletes an element
-console.log(s1);
+// s1.delete(60);  //Deletes an element
+// console.log(s1);
 
-console.log(s1.size);   //Prints the size of the elements
+// console.log(s1.size);   //Prints the size of the elements
 
-s1.clear();
-console.log(s1);  //Deletes all the elements
+// s1.clear();
+// console.log(s1);  //Deletes all the elements
 
 
 
@@ -911,13 +911,34 @@ Promise Fulfilled States - When the communication between the client and server 
 Promise Failed States - When users network is down, when server is down, when dns server(Converts web name to IP addresses) is down, when users api limit is hit/over. In short, when the client cannot communicate with the server completely.
 */
 
-
-
 // //Promise Chaining
-fetch("https://api.github.com/users")   //We fetched this link. 
+fetch("https://api.github.com/users")   //We fetched this link. Its an API and we can make max 60 API per hour. 
 .then((response)=>{   //'.then()' - It is an asynchronous task(which takes some time to execute), once the link is fetched the '.then()' block executes.
+  
+  if(!response.ok){   //(response.data)- Means, the actual data what we want. But here, we used 'Explanation mark(!)' before response.data, that means that; if we didnt get the actual/desired data, then this block will be executed (Error will be thrown).
+    throw new Error("Data is not present in the server"); //If we didnt get the actual/desired data, then this error will be thrown
+  }
+  
   return response.json();   //Once the link is fetched successfully, we convert it into '.json()' format.
 })
 .then((data)=>{  
-  console.log(data);    //After converting to '.json()', we print the data (In '.json()' format)
+  // console.log(data);    //After converting to '.json()', we print the data (In '.json()' format)
+  
+  const parent = document.getElementById("promise");
+  for(let i=0; i<data.length; i++){
+    const img = document.createElement("img");
+    img.src = data[i].avatar_url;
+    img.style.height = "400px";
+    img.style.width = "400px";
+    parent.append(img);
+  }
 })
+
+// .catch((error)=>{
+//   const parent = 
+// })
+
+// //Following is the code to check the usage of API (Before running it, comment all the above code)
+// fetch("https://api.github.com/rate_limit")
+//   .then(r => r.json())
+//   .then(d => console.log(d.rate));
