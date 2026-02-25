@@ -911,6 +911,7 @@ Promise Fulfilled States - When the communication between the client and server 
 Promise Failed States - When users network is down, when server is down, when dns server(Converts web name to IP addresses) is down, when users api limit is hit/over. In short, when the client cannot communicate with the server completely.
 */
 
+
 // //Promise Chaining
 fetch("https://api.github.com/users")   //We fetched this link. Its an API and we can make max 60 API per hour. 
 .then((response)=>{   //'.then()' - It is an asynchronous task(which takes some time to execute), once the link is fetched the '.then()' block executes.
@@ -934,11 +935,14 @@ fetch("https://api.github.com/users")   //We fetched this link. Its an API and w
   }
 })
 
-// .catch((error)=>{
-//   const parent = 
-// })
+.catch((error)=>{
+  const parent = document.getElementById("promise");
+  parent.style.color = "White";
+  parent.textContent = error.message;
 
-// //Following is the code to check the usage of API (Before running it, comment all the above code)
+})
+
+//  //NOTE:- Following is the code to check the usage of API (Before running it, comment all the above code)
 // fetch("https://api.github.com/rate_limit")
 //   .then(r => r.json())
 //   .then(d => console.log(d.rate));
