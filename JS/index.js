@@ -913,36 +913,54 @@ Promise Failed States - When users network is down, when server is down, when dn
 
 
 // //Promise Chaining
-fetch("https://api.github.com/users")   //We fetched this link. Its an API and we can make max 60 API per hour. 
-.then((response)=>{   //'.then()' - It is an asynchronous task(which takes some time to execute), once the link is fetched the '.then()' block executes.
+// fetch("https://api.github.com/users")   //We fetched this link. Its an API and we can make max 60 API per hour. 
+// .then((response)=>{   //'.then()' - It is an asynchronous task(which takes some time to execute), once the link is fetched the '.then()' block executes.
   
-  if(!response.ok){   //(response.data)- Means, the actual data what we want. But here, we used 'Explanation mark(!)' before response.data, that means that; if we didnt get the actual/desired data, then this block will be executed (Error will be thrown).
-    throw new Error("Data is not present in the server"); //If we didnt get the actual/desired data, then this error will be thrown
-  }
+//   if(!response.ok){   //(response.data)- Means, the actual data what we want. But here, we used 'Explanation mark(!)' before response.data, that means that; if we didnt get the actual/desired data, then this block will be executed (Error will be thrown).
+//     throw new Error("Data is not present in the server"); //If we didnt get the actual/desired data, then this error will be thrown
+//   }
   
-  return response.json();   //Once the link is fetched successfully, we convert it into '.json()' format.
-})
-.then((data)=>{  
+//   return response.json();   //Once the link is fetched successfully, we convert it into '.json()' format.
+// })
+// .then((data)=>{  
   // console.log(data);    //After converting to '.json()', we print the data (In '.json()' format)
   
-  const parent = document.getElementById("promise");
-  for(let i=0; i<data.length; i++){
-    const img = document.createElement("img");
-    img.src = data[i].avatar_url;
-    img.style.height = "400px";
-    img.style.width = "400px";
-    parent.append(img);
-  }
-})
+//   const parent = document.getElementById("promise");
+//   for(let i=0; i<data.length; i++){
+//     const img = document.createElement("img");
+//     img.src = data[i].avatar_url;
+//     img.style.height = "400px";
+//     img.style.width = "400px";
+//     parent.append(img);
+//   }
+// })
 
-.catch((error)=>{
-  const parent = document.getElementById("promise");
-  parent.style.color = "White";
-  parent.textContent = error.message;
+// .catch((error)=>{
+//   const parent = document.getElementById("promise");
+//   parent.style.color = "White";
+//   parent.textContent = error.message;
 
-})
+// })
 
 //  //NOTE:- Following is the code to check the usage of API (Before running it, comment all the above code)
 // fetch("https://api.github.com/rate_limit")
 //   .then(r => r.json())
 //   .then(d => console.log(d.rate));
+
+
+// //Creating Promise
+// //1]
+const p1 = new Promise((resolve,reject)=>{
+  resolve("Hello");
+})
+console.log(p1);  //This will print the message as it is printed using resolve.
+
+// //2]
+const p2 = new Promise((resolve,reject)=>{
+  reject("Hello");
+})
+p2.then((response)=>{   //This won't print the message directly as it is of reject phase, so it has to be consumed first.
+  console.log(response)
+}).catch((error)=>{   //If any error occurs, then this block will handle it
+  console.log(error);
+})
