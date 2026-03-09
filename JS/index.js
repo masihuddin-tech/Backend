@@ -950,17 +950,54 @@ Promise Failed States - When users network is down, when server is down, when dn
 
 // //Creating Promise
 // //1]
-const p1 = new Promise((resolve,reject)=>{
-  resolve("Hello");
-})
-console.log(p1);  //This will print the message as it is printed using resolve.
+// const p1 = new Promise((resolve,reject)=>{
+//   resolve("Hello");
+// })
+// console.log(p1);  //This will print the message as it is printed using resolve.
 
-// //2]
-const p2 = new Promise((resolve,reject)=>{
-  reject("Hello");
-})
-p2.then((response)=>{   //This won't print the message directly as it is of reject phase, so it has to be consumed first.
-  console.log(response)
-}).catch((error)=>{   //If any error occurs, then this block will handle it
-  console.log(error);
-})
+// // //2]
+// const p2 = new Promise((resolve,reject)=>{
+//   reject("Hello");
+// })
+// p2.then((response)=>{   //This won't print the message directly as it is of reject phase, so it has to be consumed first.
+//   console.log(response)
+// }).catch((error)=>{   //If any error occurs, then this block will handle it
+//   console.log(error);
+// })
+
+
+
+// //(Comment all the above code)
+// //***********Async, await***********
+/*1]Async - It is a task which doesnt execute at once, it requires some time for its execution (atleast some miliseconds)
+  2]Await - It stops/freezes the program execution until the 'await' line gets executed. 
+*/
+/*Note:-
+1]Always use await inside the async function only
+2]Async will always return a promise
+*/
+// //Ex:
+// async function greet(){
+//   return "Khan";
+// }
+// const resp = greet();
+// resp.then((data)=>console.log(data))    //We can also use '.then()' like this (in a single line) 
+
+
+// //We can fetch the following data using 'await' keyword
+// const response = await fetch("https://api.github.com/users");   //Here, the program execution will stop/freeze until it fetches the URL. 
+// const data = await response.json();   //After that, it will convert the response into '.json()' format.
+// console.log(data);    //Then the data will be printed
+// console.log("Assalamualaikum!")   //This line doesnt depends on the above code but then too it has to wait for its execution, as the above lines contains 'await' keyword.
+// //Problem: In the above code, the execution of the program freezes, which doesnt a good practise.
+
+
+// //To overcome the above problem, we use the async function. (Comment the above code)
+async function github(){  //This function will be executed after some time, as it is an async function.
+  console.log("I am inside the function")   //This will be executed at once.
+  const response = await fetch("https://api.github.com/users");   //This will take some time for its execution
+  const data = await response.json();
+  console.log(data);
+}
+github();
+console.log("I am outside the function");  //Here, this line will gets executed first, as the above function is an 'async function'.
