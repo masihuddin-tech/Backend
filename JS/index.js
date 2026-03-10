@@ -969,6 +969,7 @@ Promise Failed States - When users network is down, when server is down, when dn
 
 // //(Comment all the above code)
 // //***********Async, await***********
+
 /*1]Async - It is a task which doesnt execute at once, it requires some time for its execution (atleast some miliseconds)
   2]Await - It stops/freezes the program execution until the 'await' line gets executed. 
 */
@@ -1001,3 +1002,5 @@ async function github(){  //This function will be executed after some time, as i
 }
 github();
 console.log("I am outside the function");  //Here, this line will gets executed first, as the above function is an 'async function'.
+
+/* **********Async-await project (Refer 'Async-await.html' and 'Async-await.js')********** */
