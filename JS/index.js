@@ -994,13 +994,31 @@ Promise Failed States - When users network is down, when server is down, when dn
 
 
 // //To overcome the above problem, we use the async function. (Comment the above code)
-async function github(){  //This function will be executed after some time, as it is an async function.
-  console.log("I am inside the function")   //This will be executed at once.
-  const response = await fetch("https://api.github.com/users");   //This will take some time for its execution
-  const data = await response.json();
-  console.log(data);
-}
-github();
-console.log("I am outside the function");  //Here, this line will gets executed first, as the above function is an 'async function'.
+// async function github(){  //This function will be executed after some time, as it is an async function.
+//   console.log("I am inside the function")   //This will be executed at once.
+//   const response = await fetch("https://api.github.com/users");   //This will take some time for its execution
+//   const data = await response.json();
+//   console.log(data);
+// }
+// github();
+// console.log("I am outside the function");  //Here, this line will gets executed first, as the above function is an 'async function'.
 
 /* **********Async-await project (Refer 'Async-await.html' and 'Async-await.js')********** */
+
+
+
+// //*********** Prototype and Classes ***********
+const obj = {
+  name : "Masihuddin",
+  age : 22,
+  greet : function(){
+    console.log("Assalamualaikum!");
+  }
+};
+
+const obj2 = {
+  account : 30,
+}
+obj2.__proto__ = obj;     //By using '__proto__' keyword, 'obj2' can use the property of 'obj' also. Means; 'obj2' now has the property of 'obj' also.
+
+console.log(obj2.name);
