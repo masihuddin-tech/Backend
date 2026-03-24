@@ -1008,17 +1008,64 @@ Promise Failed States - When users network is down, when server is down, when dn
 
 
 // //*********** Prototype and Classes ***********
-const obj = {
-  name : "Masihuddin",
-  age : 22,
-  greet : function(){
-    console.log("Assalamualaikum!");
+// //Prototype
+// const obj = {
+//   name : "Masihuddin",
+//   age : 22,
+//   greet : function(){
+//     console.log("Assalamualaikum!");
+//   }
+// };
+
+// const obj2 = {
+//   account : 30,
+// }
+// obj2.__proto__ = obj;     //Proto means parent. By using '__proto__' keyword, 'obj2' can use the property of 'obj' also. Means; 'obj2' now has the property of 'obj' also.
+
+// console.log(obj2);
+// console.log(obj2.name);
+// console.log(obj2.age);
+// console.log(obj2.greet());
+
+
+// //Classes
+class Person{
+  constructor(name,age){
+    this.name = name;     //Jb multiple obj bnana rhega same properties k sath tb 'this' keyword use krte h. 'This' keyoword means, its like a pointer which points to each obj of this class. Inshort, every objects name and age will be different so we use 'this' keyword.  
+    this.age = age;
   }
-};
-
-const obj2 = {
-  account : 30,
+  sayHi(){
+    console.log(`Assalamualaikum ${this.name}`);
+  }
 }
-obj2.__proto__ = obj;     //By using '__proto__' keyword, 'obj2' can use the property of 'obj' also. Means; 'obj2' now has the property of 'obj' also.
 
-console.log(obj2.name);
+const p1 = new Person("Khan",20);
+console.log(p1.name);
+console.log(p1.age);
+console.log(p1.sayHi());  //'sayHi()' function execute hone k baad, o/p me undefined btayega, q ke apn kch return nhi kr rhe h funtion se. 
+
+const p2 = new Person("Zahiruddin",50);
+console.log(p2.name);
+console.log(p2.age);
+console.log(p2.sayHi());
+
+
+//Ex:- Banking application
+class Customer extends Person{    //Class 'Customer' will inteherit the property of the class 'Person'.
+  constructor(name, age, account_no, balance){
+    super(name,age);    //'super()': By using 'super' keyword, we inherit the properties of a parent class. Means, by using 'super' keyword, we call the constructor of a parent class.
+    this.account_no = account_no;
+    this.balance = balance;
+  }
+  checkBalance(){
+    return this.balance;
+  }
+}
+
+const c1 = new Customer("Masihuddin",22,93901234314, 999999999);
+console.log(c1);
+console.log(c1.name);
+console.log(c1.age);
+console.log(c1.account_no);
+console.log(c1.checkBalance());
+console.log(c1.sayHi());  //This is the funtion of a parent class. We had print it using the child class.
